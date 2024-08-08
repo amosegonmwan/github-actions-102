@@ -1,8 +1,7 @@
 name: checkout
 on:
-    push:
-      branches:
-        - main
+  workflow_dispatch:
+
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
   AWS_SECRET_KEY: ${{ secrets.SECRET_KEY }}
@@ -31,8 +30,8 @@ jobs:
       - name: Terraform Plan  
         run: terraform plan
 
-      - name: Terraform Apply  
-        run: terraform apply --auto-approve
+      #- name: Terraform Apply  
+      #  run: terraform apply --auto-approve
     
-      - name: Terraform Destroy  
-        run: terraform destroy --auto-approve
+      #- name: Terraform Destroy  
+      #  run: terraform destroy --auto-approve
