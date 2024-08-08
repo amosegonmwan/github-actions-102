@@ -11,6 +11,9 @@ jobs:
       - name: echo "Running Terraform Commands"
         run: echo "hello world"
       
+      - name: clone code
+        uses: actions/checkout@v4
+
       - name: List
         run: ls
             
