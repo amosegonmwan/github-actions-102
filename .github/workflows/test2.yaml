@@ -1,6 +1,6 @@
-name: checkout
+name: GitHub Actions Labs
 on:
-  workflow_dispatch:
+  push:
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
@@ -25,10 +25,11 @@ jobs:
         run: terraform init
 
       - name: Terraform Format  
-        run: terraform fmt -recursive
+        run: terraform fmt -check
 
       - name: Terraform Plan  
         run: terraform plan
+        if: success()
 
       #- name: Terraform Apply  
       #  run: terraform apply --auto-approve
