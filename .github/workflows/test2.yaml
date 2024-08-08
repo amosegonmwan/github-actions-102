@@ -3,6 +3,9 @@ on:
     push:
       branches:
         - main
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
+  AWS_SECRET_KEY: ${{ secrets.SECRET_KEY }}
       
 jobs:
   terraforms:
