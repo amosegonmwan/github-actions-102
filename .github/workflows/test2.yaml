@@ -1,0 +1,17 @@
+name: checkout
+on:
+    push:
+      branches:
+        - main
+      
+jobs:
+  terraforms:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo "Running Terraform Commands"
+        run: echo "hello world"
+      
+      - name: List
+        run: ls
+            
+    
