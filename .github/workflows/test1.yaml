@@ -19,3 +19,11 @@ jobs:
           ls -la
           pwd
           npm -v
+  python-commands:
+    runs-on: ubuntu-latest
+    steps:
+      - name: python import
+        run: |
+          import platform
+          print(platform.processor())
+        shell: python
