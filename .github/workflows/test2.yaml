@@ -4,11 +4,8 @@ on:
     branches:
       - main
   pull_request:
-    types:
-      - opened
-      - reopened
-    #branches:
-    #  - dev
+    branches:
+      - dev
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
@@ -27,7 +24,7 @@ jobs:
       - name: Install Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: "1.1.7"
+          terraform_version: "1.9.3"
 
       - name: Terraform Init  
         run:  terraform init
@@ -39,6 +36,6 @@ jobs:
         run: terraform plan
         if: github.event_name == 'pull_request'
 
-      - name: Terraform Apply  
-        run: terraform destroy --auto-approve
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      #- name: Terraform Apply  
+      #  run: terraform destroy --auto-approve
+      #  if: github.event_name == 'push' && github.ref == 'refs/heads/main'
