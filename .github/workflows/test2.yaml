@@ -3,12 +3,12 @@ name: Terraform AWS Infra
 on:
   push:
     branches:
-      - main
+      - staging
   pull_request:
     types:
       - opened
     branches:
-      - main
+      - staging
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
