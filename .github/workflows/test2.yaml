@@ -35,10 +35,10 @@ jobs:
       - name: Terraform Format  
         run: terraform fmt 
  
-      - name: Terraform Plan  
-        run: terraform plan
-        if: github.event_name == 'pull_request' 
+      #- name: Terraform Plan  
+      #  run: terraform plan
+      #  if: github.event_name == 'pull_request' 
 
-      - name: Terraform Apply  
-        run: terraform destroy --auto-approve
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      #- name: Terraform Apply  
+      #  run: terraform destroy --auto-approve
+      #  if: github.event_name == 'push' && github.ref == 'refs/heads/main'
