@@ -1,8 +1,21 @@
 on:
-  push
+  push:
+    branches:
+      - main
+    
+  pull_request:
+    branches:
+      - dev
 
 jobs:
   shell-commands:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "hello world"
+      - name: echo
+        run: echo "hello world"
+    
+      - name: multi-line
+        run: |
+          ls -la
+          pwd
+          npm
