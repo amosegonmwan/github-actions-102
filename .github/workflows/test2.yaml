@@ -1,6 +1,11 @@
-name: GitHub Actions Labs
+name: my-github-actions-lab 
 on:
   push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - dev
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
@@ -34,6 +39,4 @@ jobs:
       - name: Terraform Apply  
         run: terraform apply --auto-approve
         if: github.event_name == 'workflow_dispatch'
-    
-      - name: Terraform Destroy  
-        run: terraform destroy --auto-approve
+
