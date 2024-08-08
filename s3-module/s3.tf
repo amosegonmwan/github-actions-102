@@ -29,3 +29,14 @@ resource "aws_sns_topic_subscription" "email" {
   protocol  = "email"
   topic_arn = aws_sns_topic.topic.arn
 }
+
+# Release 3: Bucket Notification
+resource "aws_s3_bucket_notification" "bucket_notification" {
+  bucket = aws_s3_bucket.bucket.id
+
+  topic {
+    topic_arn     = aws_sns_topic.topic.arn
+    events        = ["s3:ObjectCreated:*"]
+    filter_suffix = ".log"
+  }
+}
