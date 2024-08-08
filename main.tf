@@ -16,4 +16,5 @@ resource "aws_vpc" "github-actions" {
 
     tags = {
       Name = "Github-Actions-VPC"
-    }  }
+    }  
+}
