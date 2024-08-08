@@ -7,13 +7,18 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - name: Clone Code
+      - name: Clone code
         uses: actions/checkout@v4 
+
+      - name: Install node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
       - name: Install npm module
         run: npm install semantic-release @semantic-release/git @semantic-release/github -D
 
-      - name: Install Release Plugins
+      - name: Install release plugins
         run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
