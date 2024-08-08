@@ -29,3 +29,13 @@ jobs:
           import platform
           print(platform.processor())
         shell: python
+
+  windows-commands:
+    needs: python-commands
+    runs-on: windows-latest
+    steps:
+      - name: Directory
+        run: Get-Location
+      - name: Get Directory
+        run: pwd
+        shell: bash
