@@ -11,9 +11,8 @@ jobs:
   terraforms:
     runs-on: ubuntu-latest
     steps:
-      - name: Terraform
-        id: terraform
-        run: echo "Running Terraform Commands"
+      - name: Event Name
+        run: echo ${{ github.event_name }}
       
       - name: Clone Code  
         uses: actions/checkout@v4
