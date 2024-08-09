@@ -135,3 +135,11 @@ resource "aws_s3_bucket_lifecycle_configuration" "bucket-config" {
     }
   }
 }
+
+# Release : Bucket Logging
+resource "aws_s3_bucket_logging" "bucket_logging" {
+  bucket = aws_s3_bucket.bucket.id
+
+  target_bucket = aws_s3_bucket.bucket.id
+  target_prefix = "logs/"
+}
