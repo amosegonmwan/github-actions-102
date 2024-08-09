@@ -49,3 +49,41 @@ resource "aws_s3_bucket_versioning" "bucket_versioning" {
     status = var.status
   }
 }
+
+# Release : Server-side encryption
+resource "aws_kms_key" "mykmskey" {
+  description             = "An example symmetric encryption KMS key"
+  enable_key_rotation     = true
+  deletion_window_in_days = 20
+}
+
+resource "aws_kms_key_policy" "mykmskey-policy" {
+  key_id = aws_kms_key.mykmskey.id
+  policy = jsonencode({
+    Id = "example"
+    Statement = [
+      {
+        Action = "kms:*"
+        Effect = "Allow"
+        Principal = {
+          AWS = "*"
+        }
+
+        Resource = "*"
+        Sid      = "Enable IAM User Permissions"
+      },
+    ]
+    Version = "2012-10-17"
+  })
+}
+
+resource "aws_s3_bucket_server_side_encryption_configuration" "bucket_encryption" {
+  bucket = aws_s3_bucket.bucket.id
+
+  rule {
+    apply_server_side_encryption_by_default {
+      kms_master_key_id = aws_kms_key.mykmskey.arn
+      sse_algorithm     = "aws:kms"
+    }
+  }
+}
