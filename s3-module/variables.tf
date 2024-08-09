@@ -20,4 +20,4 @@ variable "status" {
 
 variable "region" {
   type = string
-}  
+}   
