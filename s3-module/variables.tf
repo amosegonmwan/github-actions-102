@@ -17,3 +17,7 @@ variable "env" {
 variable "status" {
   type = string
 }
+
+variable "region" {
+  type = string
+}  
