@@ -143,3 +143,7 @@ resource "aws_s3_bucket_logging" "bucket_logging" {
   target_bucket = aws_s3_bucket.bucket.id
   target_prefix = "logs/"
 }
+
+provider "aws" {
+  region = var.region
+}
